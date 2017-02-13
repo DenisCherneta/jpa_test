@@ -1,4 +1,7 @@
-package ru.dcherneta.vcpe.lib.db;
+package ru.dcherneta.vcpe.lib.db.util;
+
+import ru.dcherneta.vcpe.lib.db.model.ItemEntity;
+import ru.dcherneta.vcpe.lib.db.model.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;

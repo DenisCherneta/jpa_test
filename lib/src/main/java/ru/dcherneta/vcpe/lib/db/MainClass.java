@@ -1,5 +1,9 @@
 package ru.dcherneta.vcpe.lib.db;
 
+import ru.dcherneta.vcpe.lib.db.model.ItemEntity;
+import ru.dcherneta.vcpe.lib.db.model.UserEntity;
+import ru.dcherneta.vcpe.lib.db.util.EntityDBActions;
+
 import java.util.List;
 
 //import static EntityDBAction.removeUserById;
@@ -11,13 +15,17 @@ import java.util.List;
 public class MainClass {
     public static void main (String args[]){
         EntityDBActions entityDBActions = new EntityDBActions();
-        UserEntity userE;// = new UserEntity("PapijTEST");
-        //ItemEntity item;// = new ItemEntity("itemTEST", user);
+        /*UserEntity userNew = new UserEntity("PapijTEST");
+        ItemEntity itemNew;// = new ItemEntity("itemTEST", user);
 
-        userE = entityDBActions.getEntityById(UserEntity.class, 27L);
-        System.out.println(">> "+userE.toString());
+        for (int i=0; i<3; i++){
+            itemNew = new ItemEntity();
+            itemNew.setTitle("Item" + i);
+            userNew.addUserItem(itemNew);
+        }
+        userNew = entityDBActions.insertEntity(userNew);*/
 
-        List<UserEntity> list = entityDBActions.getUsersByName("PapijTEST");
+        List<UserEntity> list = entityDBActions.getUsersByName("Chack Norris");
         for (UserEntity user : list){
             System.out.println(">> "+user.toString());
             List<ItemEntity> items = user.getUserItems();

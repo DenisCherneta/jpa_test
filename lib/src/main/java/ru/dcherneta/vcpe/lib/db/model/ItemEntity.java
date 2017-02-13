@@ -1,4 +1,4 @@
-package ru.dcherneta.vcpe.lib.db;
+package ru.dcherneta.vcpe.lib.db.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,10 +27,14 @@ public class ItemEntity implements Serializable {
     //private long userId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id"/*, nullable = false*/)
     private UserEntity _user;
 
     public ItemEntity(){}
+
+    public ItemEntity(String title){
+        this._title = title;
+    }
 
     public ItemEntity(String title, UserEntity user) {
         this._title = title;

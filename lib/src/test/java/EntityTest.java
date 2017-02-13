@@ -5,8 +5,9 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ru.dcherneta.vcpe.lib.db.ItemEntity;
-import ru.dcherneta.vcpe.lib.db.UserEntity;
+import ru.dcherneta.vcpe.lib.db.dictionary.RoleEnum;
+import ru.dcherneta.vcpe.lib.db.model.ItemEntity;
+import ru.dcherneta.vcpe.lib.db.model.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,6 +46,12 @@ public class EntityTest {
         remove(userDB);
         userDB = _entityManager.find(UserEntity.class, 1L);
         Assert.assertNull(">> Delete Error: userDB", userDB);
+
+        user = new UserEntity("Jonik");
+        user.setUserRole(RoleEnum.ADMINISTRATOR);
+        System.out.println(">> Jonik ID 1 : " + user.getUserId());
+        persist(user);
+        System.out.println(">> Jonik ID 2 : " + user.getUserId());
 
         //ItemEntity
         user = new UserEntity("JonikITEM");

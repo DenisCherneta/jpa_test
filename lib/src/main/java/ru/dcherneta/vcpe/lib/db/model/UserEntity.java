@@ -1,4 +1,6 @@
-package ru.dcherneta.vcpe.lib.db;
+package ru.dcherneta.vcpe.lib.db.model;
+
+import ru.dcherneta.vcpe.lib.db.dictionary.RoleEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,8 +28,11 @@ public class UserEntity implements Serializable {
     @Column(name = "name", nullable = false, length = 25)
     private String _name = null;
 
-    @OneToMany(mappedBy = "_user", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "_user", cascade = CascadeType.PERSIST)
     private List<ItemEntity> _userItems;
+
+    @JoinColumn(name = "role_id", nullable = false/*, referencedColumnName = "role_id"*/)
+    private RoleEnum _userRole;
 
     public UserEntity() {}
 
@@ -82,7 +87,7 @@ public class UserEntity implements Serializable {
 
         if (_userId != that._userId) return false;
         if (_name != null ? !_name.equals(that._name) : that._name != null) return false;
-
+        if (_userRole != that._userRole) return false;
         return true;
     }
 
@@ -100,5 +105,13 @@ public class UserEntity implements Serializable {
                 ", _name='" + _name +
                 //'\'' + ", _userItems=" + _userItems +
                 '}';
+    }
+
+    public RoleEnum getUserRole() {
+        return _userRole;
+    }
+
+    public void setUserRole(RoleEnum role) {
+        this._userRole = role;
     }
 }

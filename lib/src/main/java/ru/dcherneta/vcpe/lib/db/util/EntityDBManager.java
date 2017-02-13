@@ -1,4 +1,4 @@
-package ru.dcherneta.vcpe.lib.db;
+package ru.dcherneta.vcpe.lib.db.util;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,8 +28,6 @@ public class EntityDBManager {
             if(_entityManagerFactory != null){
                 _entityManagerFactory.close();
             }
-        }catch(Throwable t){
-            throw t;
         }finally {
             super.finalize();
         }

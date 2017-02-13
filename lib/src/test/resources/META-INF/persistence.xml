@@ -9,8 +9,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<description>Test DataBase Connection persistence unit</description>
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-		<class>ru.dcherneta.vcpe.lib.db.UserEntity</class>
-		<class>ru.dcherneta.vcpe.lib.db.ItemEntity</class>
+		<class>ru.dcherneta.vcpe.lib.db.model.UserEntity</class>
+		<class>ru.dcherneta.vcpe.lib.db.model.ItemEntity</class>
+		<class>ru.dcherneta.vcpe.lib.db.model.RoleEntity</class>
+		<class>ru.dcherneta.vcpe.lib.db.dictionary.RoleEnum</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
