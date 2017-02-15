@@ -25,7 +25,7 @@ public class ItemRESTService implements EntityRESTService<ItemEntity>{
     @Override
     @GET
     //@Produces(MediaType.APPLICATION_JSON)
-    public ItemEntity get(@QueryParam("id") int id){
+    public ItemEntity get(@QueryParam("id") Long id){
         return entityManager.find(ItemEntity.class, id);
     }
     /*

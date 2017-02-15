@@ -24,7 +24,7 @@ public class UserRESTService implements EntityRESTService<UserEntity>{
 
     @GET
     //@Path("/get/{id}")
-    public UserEntity get(@QueryParam("id") int id){
+    public UserEntity get(@QueryParam("id") Long id){
         return entityManager.find(UserEntity.class, id);
     }
     /*

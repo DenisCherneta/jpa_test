@@ -15,7 +15,7 @@ public interface EntityRESTService<T> {
         throw new UnsupportedOperationException("Method DELETE is NOT supporting");
     };
 
-    public default T get(int id){
+    public default T get(Long id){
         throw new UnsupportedOperationException("Method GET is NOT supporting");
     } ;
 /*
