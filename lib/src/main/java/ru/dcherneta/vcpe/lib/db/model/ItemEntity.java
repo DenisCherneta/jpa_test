@@ -1,7 +1,13 @@
 package ru.dcherneta.vcpe.lib.db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.FIELD;
 
 /**
  * Created by DCherneta on 06.02.2017.
@@ -57,6 +63,7 @@ public class ItemEntity implements Serializable {
         this._title = title;
     }
 
+    @JsonIgnore // this Anno work!
     public UserEntity getUser() {
         return _user;
     }
@@ -64,16 +71,6 @@ public class ItemEntity implements Serializable {
     public void setUser(UserEntity user) {
         this._user = user;
     }
-
-    /*@Basic
-    @Column(name = "user_id", nullable = false)
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }*/
 
     @Override
     public boolean equals(Object o) {

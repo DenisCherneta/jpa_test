@@ -1,5 +1,7 @@
 package ru.dcherneta.vcpe.lib.db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.dcherneta.vcpe.lib.db.dictionary.RoleEnum;
 
 import javax.persistence.*;
@@ -31,7 +33,7 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy = "_user", cascade = CascadeType.PERSIST)
     private List<ItemEntity> _userItems;
 
-    @JoinColumn(name = "role_id", nullable = false/*, referencedColumnName = "role_id"*/)
+    @Column(name = "role_id", nullable = false/*, referencedColumnName = "role_id"*/)
     private RoleEnum _userRole;
 
     public UserEntity() {}
@@ -45,6 +47,7 @@ public class UserEntity implements Serializable {
         setName(name);
     }
 
+    @JsonIgnore
     public long getUserId() {
         return _userId;
     }
@@ -65,7 +68,7 @@ public class UserEntity implements Serializable {
         if (_userItems == null){
             _userItems = new ArrayList<>();
         }
-        return _userItems;
+        return this._userItems;
     }
 
     public void setUserItems(List<ItemEntity> userItems) {
@@ -75,6 +78,12 @@ public class UserEntity implements Serializable {
     public ItemEntity addUserItem(ItemEntity item){
         getUserItems().add(item);
         item.setUser(this);
+        return item;
+    }
+
+    public ItemEntity removeUserItem(ItemEntity item){
+        getUserItems().remove(item);
+        item.setUser(null);
         return item;
     }
 
