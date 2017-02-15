@@ -19,17 +19,6 @@ public class RoleEntity implements Serializable {
     @Column(name = "name", nullable = false, length = 20)
     private String _name;
 
-    /*@OneToMany(mappedBy = "_userRole")
-    private List<UserEntity> _users;
-
-    public List<UserEntity> getUsers() {
-        return _users;
-    }
-
-    public void setUsers(List<UserEntity> users) {
-        this._users = users;
-    }*/
-
     public long getRoleId() {
         return _roleId;
     }

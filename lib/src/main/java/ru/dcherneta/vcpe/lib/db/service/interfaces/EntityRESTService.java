@@ -23,7 +23,7 @@ public interface EntityRESTService<T> {
         throw new UnsupportedOperationException("Method GET is NOT supporting");
     } ;*/
 
-    public default T update(T entity){
+    public default T update(T entity) throws Exception{
         throw new UnsupportedOperationException("Method UPDATE is NOT supporting");
     };
 }

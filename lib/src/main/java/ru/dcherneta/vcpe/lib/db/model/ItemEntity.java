@@ -101,7 +101,7 @@ public class ItemEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ItemEntity{" +
+        return "->> ItemEntity{" +
                 "_itemId=" + _itemId +
                 ", _title='" + _title + '\'' +
                 ", _user=" + _user +

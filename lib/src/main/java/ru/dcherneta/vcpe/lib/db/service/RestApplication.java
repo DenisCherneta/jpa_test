@@ -14,12 +14,16 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("/*")
 public class RestApplication extends ResourceConfig {
 
-	public RestApplication() {	
+	/*public RestApplication(ResourceConfig original) {
+		super(original);
 		property(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
 		packages("ru.dcherneta.vcpe.lib.db");
-/*
-		this.property("jersey.config.disableMoxyJson", Boolean.valueOf(true));
-		this.packages(new String[]{"ru.dcherneta.vcpe.lib.db"});*/
+	}*/
+
+	public RestApplication() {
+		property(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
+		packages("ru.dcherneta.vcpe.lib.db");
+
 		//this.register(new JacksonJaxbJsonProvider((new JacksonObjectMapperResolver()).getContext(ObjectMapper.class), (Annotations[])null));
 }
 

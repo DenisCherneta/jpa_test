@@ -9,18 +9,27 @@ public enum RoleEnum {
     /**
      * DEFAULT VALUE
      */
-    USER,
 
-    ADMINISTRATOR;
+    /*USER,
+
+    ADMINISTRATOR;*/
+
+    USER(1),
+
+    ADMINISTRATOR(2);
 
     private Integer _id;
+
+    private RoleEnum(int id){
+        setId(id);
+    }
 
     /**
      * @return {@link RoleEntity} id
      */
     public int getId() {
         if (_id == null) {
-            throw new IllegalStateException("Field id is not set for " + name());
+            throw new IllegalStateException(">> Field ID is not set for " + name());
         }
         return _id;
     }
@@ -30,7 +39,7 @@ public enum RoleEnum {
      */
     public void setId(int id) {
         if (_id != null) {
-            throw new IllegalArgumentException("Field id is already set for " + name());
+            throw new IllegalArgumentException(">> Field ID is already set for " + name());
         }
         this._id = id;
     }
@@ -43,12 +52,11 @@ public enum RoleEnum {
      * @return instance of {@link RoleEnum}
      */
     public static RoleEnum getStatus(int id) {
-        for (RoleEnum status : RoleEnum.values()) {
-            if (status.getId() == id) {
-                return status;
+        for (RoleEnum role : RoleEnum.values()) {
+            if (role.getId() == id) {
+                return role;
             }
         }
-
         return null;
     }
 

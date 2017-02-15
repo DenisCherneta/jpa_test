@@ -47,7 +47,7 @@ public class UserEntity implements Serializable {
         setName(name);
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public long getUserId() {
         return _userId;
     }
@@ -109,7 +109,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UserEntity{" +
+        return "->> UserEntity{" +
                 "_userId=" + _userId +
                 ", _name='" + _name +
                 //'\'' + ", _userItems=" + _userItems +
