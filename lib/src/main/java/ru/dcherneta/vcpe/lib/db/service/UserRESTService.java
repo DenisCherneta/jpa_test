@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
-@Stateless
+//@Stateless
 public class UserRESTService implements EntityRESTService<UserEntity>{
 
     @PersistenceContext(unitName = "vcpeTestDS")
@@ -27,23 +27,21 @@ public class UserRESTService implements EntityRESTService<UserEntity>{
     public UserEntity get(@QueryParam("id") Long id){
         return entityManager.find(UserEntity.class, id);
     }
-    /*
-    public Response get(@QueryParam("id") int id){
-        return Response.ok(entityManager.find(UserEntity.class, id)).build();
-    }*/
 
     @Override
     @POST
     //@Path("/add")
-    //@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public UserEntity create(UserEntity user){
+        System.out.println(">> create User ... <<");
         if (user!=null){
-            EntityTransaction entityTransaction = entityManager.getTransaction();
-            entityTransaction.begin();
+            System.out.println(">> User name: " + user.getName());
+            //EntityTransaction entityTransaction = entityManager.getTransaction();
+            //entityTransaction.begin();
             entityManager.persist(user);
-            entityTransaction.commit();
-            entityManager.refresh(user);
+            entityManager.flush();
+            /*entityManager.refresh(user);*/
+            //entityTransaction.commit();
         }
         return user;
     }
